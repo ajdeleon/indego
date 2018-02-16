@@ -4,8 +4,19 @@ import StationType from './stationtype'
 
 const URL = 'https://www.rideindego.com/stations/json/'
 
-function getStations() {
-  return axios.get(URL).then(res => res.data.features)
+async function getAllStations() {
+  const res = await axios.get(URL)
+  const data = res.data.features
+  return data
+}
+
+async function getStationByID(id) {
+  const res = await axios.get(URL)
+  const data = res.data.features
+  const station = data.find(sta => {
+    return sta.properties.kioskId === id
+  })
+  return station
 }
 
 const QueryType = new GraphQLObjectType({
@@ -14,14 +25,14 @@ const QueryType = new GraphQLObjectType({
   fields: () => ({
     allStations: {
       type: new GraphQLList(StationType),
-      resolve: root => getStations
+      resolve: root => getAllStations()
     },
     station: {
       type: StationType,
       args: {
         id: { type: GraphQLInt}
       },
-      resolve: (root, args) => getStations[args]
+      resolve: (root, args) => getStationByID(args.id)
     }
   })
  })

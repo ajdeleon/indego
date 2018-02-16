@@ -1,4 +1,4 @@
-import { GraphQLObjectType, GraphQLString, GraphQLInt } from 'graphql'
+import { GraphQLObjectType, GraphQLString, GraphQLInt, GraphQLID } from 'graphql'
 
 const StationType = new GraphQLObjectType({
   name: 'Station',
@@ -6,23 +6,27 @@ const StationType = new GraphQLObjectType({
   fields: () => ({
     name: {
       type: GraphQLString,
-      resolve: station => properties.name
+      resolve: station => station.properties.name
     },
     address: {
       type: GraphQLString,
-      resolve: station => properties.addressStreet
+      resolve: station => station.properties.addressStreet
     },
     longitude: {
-      type: GraphQLInt,
-      resolve: station => geometry.coordinates[0]
+      type: GraphQLString,
+      resolve: station => station.geometry.coordinates[0]
     },
     latitude: {
-      type: GraphQLInt,
-      resolve: station => geometry.coordinates[1]
+      type: GraphQLString,
+      resolve: station => station.geometry.coordinates[1]
     },
     bikes: {
       type: GraphQLInt,
-      resolve: station => properties.bikesAvailable
+      resolve: station => station.properties.bikesAvailable
+    },
+    id: {
+      type: GraphQLID,
+      resolve: station => station.properties.kioskId
     }
   })
 })
