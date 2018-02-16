@@ -21,7 +21,7 @@ const QueryType = new GraphQLObjectType({
       args: {
         id: { type: GraphQLInt}
       },
-      resolve: (root, args) => getStations
+      resolve: (root, args) => getStations[args]
     }
   })
  })

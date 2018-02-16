@@ -1,7 +1,7 @@
-var { GraphQLSchema } = require('graphql')
+import { GraphQLSchema } from 'graphql'
 import QueryType from '../types/querytype'
 
-module.exports = new GraphQLSchema({
+export default new GraphQLSchema({
   query: QueryType
 })
 

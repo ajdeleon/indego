@@ -1,8 +1,8 @@
-var express = require('express')
-var graphqlHTTP = require('express-graphql')
+import express from 'express'
+import graphqlHTTP from 'express-graphql'
 
-var app = express()
-var schema = require('./src/graphql/schema/schema')
+const app = express()
+import schema from './src/graphql/schema/schema'
 
 app.use('/graphql', graphqlHTTP({
   schema: schema,
@@ -10,3 +10,4 @@ app.use('/graphql', graphqlHTTP({
 }))
 
 app.listen(5000)
+console.log('Server started on port 5000')
