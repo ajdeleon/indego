@@ -1,27 +1,38 @@
-import React from 'react'
+import React, { Component } from 'react'
+import axios from 'axios'
+
 
 //import BikeStationList from './components/BikeStationsList'
 //import BikeStationsListGraphQL from './components/BikeStationsListGraphQL'
-import MyMapComponent from './components/GoogleMap'
+import SimpleMap from './components/GoogleMap'
 
-const App = () => {
-  return (
+class App extends Component {
+  constructor(props) {
+    super()
 
-    <div>
-      {/* <BikeStationList /> */}
-      {/* <BikeStationsListGraphQL /> */}
-      <MyMapComponent
-  isMarkerShown
-  googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
-  loadingElement={<div style={{ height: `100%` }} />}
-  containerElement={<div style={{ height: `400px` }} />}
-  mapElement={<div style={{ height: `100%` }} />}
-/>
-      <h1>H1</h1>
-      <h2>H2</h2>
-      <h3>H3</h3>
-    </div>
+    this.state = { stationData : []}
+  }
+
+  async componentDidMount() {
+    const res = await axios.get('https://www.rideindego.com/stations/json/')
+    const stationData = res.data.features
+    this.setState({ stationData })
+  }
+
+  render() {
+    return (
+      <div>
+        {/* <BikeStationList /> */}
+        {/* <BikeStationsListGraphQL /> */}
+         
+          <SimpleMap/>
+        
+        <h1>H1</h1>
+        <h2>H2</h2>
+        <h3>H3</h3>
+      </div>
   )
+}
 }
 
 export default App
