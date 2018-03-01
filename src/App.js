@@ -4,7 +4,7 @@ import axios from 'axios'
 
 //import BikeStationList from './components/BikeStationsList'
 //import BikeStationsListGraphQL from './components/BikeStationsListGraphQL'
-import SimpleMap from './components/GoogleMap'
+import GoogleMap from './components/GoogleMap'
 
 class App extends Component {
   constructor(props) {
@@ -24,9 +24,9 @@ class App extends Component {
       <div>
         {/* <BikeStationList /> */}
         {/* <BikeStationsListGraphQL /> */}
-         
-          <SimpleMap/>
-        
+        <div style={{height: 600, width: 600}}> 
+          <GoogleMap stations={this.state.stationData}/>
+        </div>
         <h1>H1</h1>
         <h2>H2</h2>
         <h3>H3</h3>
