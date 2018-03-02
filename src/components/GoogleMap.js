@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import GoogleMapReact from 'google-map-react'
-
-const Box = ({ text }) => <div style={{fontSize: 8, border: '1px solid black', width: 10, height: 10}}>{text}</div>
+import IndegoPin from './IndegoPin'
 
 class GoogleMap extends Component {
   static defaultProps = {
@@ -11,7 +10,7 @@ class GoogleMap extends Component {
 
   renderStations() {
     return this.props.stations.map(station => {
-      return <Box lng={station.geometry.coordinates[0]} lat={station.geometry.coordinates[1]} text={station.properties.name} key={station.properties.name} />
+      return <IndegoPin lng={station.geometry.coordinates[0]} lat={station.geometry.coordinates[1]} key={station.properties.name} />
     })
   }
 
@@ -19,7 +18,7 @@ class GoogleMap extends Component {
     console.log(this.props)
     return (
       <GoogleMapReact
-        bootstrapURLKeys={{ key: 'AIzaSyD1sEpEAo5y9HleN0pnyJF-vUv0NSiwTfs' }}
+        bootstrapURLKeys={{ key: 'AIzaSyD1sEpEAo5y9HleN0pnyJF-vUv0NSiwTfs', v: '3.31' }}
         defaultCenter={this.props.center}
         defaultZoom={this.props.zoom}
       >
