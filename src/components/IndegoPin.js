@@ -12,7 +12,7 @@ const pinStyle = {
 const IndegoPin = () => {
   return (
     <div>
-    <img src={indegoPin} style={pinStyle} alt="Indego Station"/>
+      <img src={indegoPin} style={pinStyle} alt="Indego Station"/>
     </div>
   )
 }

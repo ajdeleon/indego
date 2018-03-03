@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import GoogleMapReact from 'google-map-react'
 import IndegoPin from './IndegoPin'
+import keys from '../keys'
 
 class GoogleMap extends Component {
   static defaultProps = {
@@ -18,7 +19,7 @@ class GoogleMap extends Component {
     console.log(this.props)
     return (
       <GoogleMapReact
-        bootstrapURLKeys={{ key: 'AIzaSyD1sEpEAo5y9HleN0pnyJF-vUv0NSiwTfs', v: '3.31' }}
+        bootstrapURLKeys={{ key: keys.GOOGLE_MAPS_KEY, v: '3.31' }}
         defaultCenter={this.props.center}
         defaultZoom={this.props.zoom}
       >
