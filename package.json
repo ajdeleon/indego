@@ -7,7 +7,7 @@
     "axios": "^0.17.1",
     "concurrently": "^3.5.1",
     "cors": "^2.8.4",
-    "express": "^4.16.2",
+    "express": "^4.17.3",
     "express-graphql": "^0.6.11",
     "google-map-react": "^0.32.0",
     "graphql": "^0.13.1",
